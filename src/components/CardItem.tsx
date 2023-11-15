@@ -16,12 +16,12 @@ type Props = {
 const CardItem = (props: Props) => {
   const { itemImage, itemName, price, rarity, seller, sellerIcon } = props;
   return (
-    <div className="flex flex-col w-[30%] bg-[#3A3841] rounded-[10px] h-full gap-[24px] text-white p-[16px]">
+    <div className="flex flex-col w-[30%] bg-[#3A3841] rounded-[10px] h-[365px] gap-[24px] text-white p-[16px]">
       <div className="relative">
         <Image
           src={itemImage}
           alt={itemName}
-          className="w-full h-full rounded-[4px]"
+          className="w-[235px] h-[235px] rounded-[4px]"
           width={100}
           height={100}
         />

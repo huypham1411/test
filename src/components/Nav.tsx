@@ -1,4 +1,5 @@
-import { Button } from 'antd';
+'use client'
+import { Button, Dropdown, MenuProps, Popover } from 'antd';
 import Image from 'next/image';
 import React from 'react';
 import icon from '@/public/images/icon.png';
@@ -13,6 +14,21 @@ const Nav = (props: Props) => {
     { name: 'MARKETPLACE ROADMAP', active: true },
     { name: 'WHITE PAPER' },
   ];
+  const items: MenuProps['items'] = menuItems.map((item) => {
+    return {
+      key: item.name,
+      label: item.active ? (
+        <div className="flex flex-row gap-[10px]">
+          <div className="text-[#DA458F] ">
+            {item.name.split(' ')[0]}
+          </div>
+          {item.name.split(' ')[1]}
+        </div>
+      ) : (
+        item.name
+      )
+    }
+  })
 
   return (
     <div className="flex flex-row bg-[#17161A] justify-between py-[32px] pl-[15%] pr-[2%] relative items-center w-full">
@@ -38,6 +54,13 @@ const Nav = (props: Props) => {
         })}
       </div>
       {/* mobile menu */}
+      <div className='lg:hidden'>
+      <Dropdown menu={{ items }}>
+    <a onClick={(e) => e.preventDefault()}>
+        Hover me
+    </a>
+  </Dropdown>
+      </div>
       <div className="flex flex-row gap-[3%] items-center">
         <Button className="bg-[#DA458F] blur-[50] text-white leading-[24px] text-[16px] font-[600] border-none">
           Connect Wallet

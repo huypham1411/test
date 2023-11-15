@@ -19,7 +19,7 @@ const Category = (props: Props) => {
     'Rare',
   ];
   return (
-    <div className="flex flex-row overflow-hidden gap-[24px] w-[70%] overflow-x-visible h-[44px]">
+    <div className="flex flex-row overflow-hidden gap-[24px] w-full overflow-x-visible h-[44px]">
       {categoryList.map((item, index) => {
         return (
           <div
