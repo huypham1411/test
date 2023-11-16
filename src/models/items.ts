@@ -1,3 +1,4 @@
+import { Int32 } from 'mongodb';
 import { Schema, model, models } from 'mongoose';
 
 const ItemSchema = new Schema({
@@ -11,7 +12,7 @@ const ItemSchema = new Schema({
     require: [true],
   },
   price: {
-    type: String,
+    type: Number,
     require: [true],
   },
   owner: {

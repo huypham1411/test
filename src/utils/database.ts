@@ -14,8 +14,6 @@ export const connectToDB = async () => {
   try {
     const options = {
       dbName: 'Test',
-      useNewUrlParser: true,
-      // useUnifiedTopology: true,
     };
 
     await mongoose.connect(process.env.MONGODB_URI!, options);

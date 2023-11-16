@@ -1,8 +1,9 @@
-'use client'
+'use client';
 import { Button, Dropdown, MenuProps, Popover } from 'antd';
 import Image from 'next/image';
 import React from 'react';
 import icon from '@/public/images/icon.png';
+import { MenuOutlined } from '@ant-design/icons';
 
 type Props = {};
 
@@ -19,16 +20,14 @@ const Nav = (props: Props) => {
       key: item.name,
       label: item.active ? (
         <div className="flex flex-row gap-[10px]">
-          <div className="text-[#DA458F] ">
-            {item.name.split(' ')[0]}
-          </div>
+          <div className="text-[#DA458F] ">{item.name.split(' ')[0]}</div>
           {item.name.split(' ')[1]}
         </div>
       ) : (
         item.name
-      )
-    }
-  })
+      ),
+    };
+  });
 
   return (
     <div className="flex flex-row bg-[#17161A] justify-between py-[32px] pl-[15%] pr-[2%] relative items-center w-full">
@@ -54,12 +53,10 @@ const Nav = (props: Props) => {
         })}
       </div>
       {/* mobile menu */}
-      <div className='lg:hidden'>
-      <Dropdown menu={{ items }}>
-    <a onClick={(e) => e.preventDefault()}>
-        Hover me
-    </a>
-  </Dropdown>
+      <div className="lg:hidden" onClick={(e) => e.preventDefault()}>
+        <Dropdown menu={{ items }}>
+          <MenuOutlined className="text-white" />
+        </Dropdown>
       </div>
       <div className="flex flex-row gap-[3%] items-center">
         <Button className="bg-[#DA458F] blur-[50] text-white leading-[24px] text-[16px] font-[600] border-none">
