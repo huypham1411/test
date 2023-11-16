@@ -1,13 +1,14 @@
 'use client';
 import { Button, Dropdown, MenuProps, Popover } from 'antd';
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import icon from '@/public/images/icon.png';
 import { MenuOutlined } from '@ant-design/icons';
 
 type Props = {};
 
 const Nav = (props: Props) => {
+  const [activeTab, setActiveTab] = useState('MARKETPLACE ROADMAP');
   const menuItems = [
     { name: 'HOME' },
     { name: 'ABOUT US' },
@@ -18,14 +19,18 @@ const Nav = (props: Props) => {
   const items: MenuProps['items'] = menuItems.map((item) => {
     return {
       key: item.name,
-      label: item.active ? (
-        <div className="flex flex-row gap-[10px]">
-          <div className="text-[#DA458F] ">{item.name.split(' ')[0]}</div>
-          {item.name.split(' ')[1]}
-        </div>
-      ) : (
-        item.name
-      ),
+      label:
+        activeTab === item.name ? (
+          <div
+            className="flex flex-row gap-[10px]"
+            onClick={() => setActiveTab(item.name)}
+          >
+            <div className="text-[#DA458F] ">{item.name.split(' ')[0]}</div>
+            {item.name.split(' ')[1]}
+          </div>
+        ) : (
+          item.name
+        ),
     };
   });
 
@@ -36,9 +41,12 @@ const Nav = (props: Props) => {
           return (
             <div
               key={index}
-              className={'text-[14px] font-[700] leading-[20px] min-w-fit'}
+              className={
+                'text-[14px] font-[700] leading-[20px] min-w-fit cursor-pointer'
+              }
+              onClick={() => setActiveTab(item.name)}
             >
-              {item.active ? (
+              {activeTab === item.name ? (
                 <div className="flex flex-row gap-[10px]">
                   <div className="text-[#DA458F] ">
                     {item.name.split(' ')[0]}
