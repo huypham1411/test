@@ -1,5 +1,5 @@
 'use client';
-import { Button, Dropdown, MenuProps, Popover } from 'antd';
+import { Button, Dropdown, MenuProps } from 'antd';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import icon from '@/public/images/icon.png';
@@ -13,24 +13,24 @@ const Nav = (props: Props) => {
     { name: 'HOME' },
     { name: 'ABOUT US' },
     { name: 'OUR TEAMS' },
-    { name: 'MARKETPLACE ROADMAP', active: true },
+    { name: 'MARKETPLACE ROADMAP' },
     { name: 'WHITE PAPER' },
   ];
   const items: MenuProps['items'] = menuItems.map((item) => {
     return {
       key: item.name,
-      label:
-        activeTab === item.name ? (
-          <div
-            className="flex flex-row gap-[10px]"
-            onClick={() => setActiveTab(item.name)}
-          >
-            <div className="text-[#DA458F] ">{item.name.split(' ')[0]}</div>
-            {item.name.split(' ')[1]}
-          </div>
-        ) : (
-          item.name
-        ),
+      label: (
+        <div onClick={() => setActiveTab(item.name)}>
+          {activeTab === item.name ? (
+            <div className="flex flex-row gap-[10px]">
+              <div className="text-[#DA458F] ">{item.name.split(' ')[0]}</div>
+              {item.name.split(' ')[1]}
+            </div>
+          ) : (
+            <div>{item.name}</div>
+          )}
+        </div>
+      ),
     };
   });
 
