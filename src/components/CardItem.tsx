@@ -22,7 +22,7 @@ const CardItem = (props: Props) => {
         <Image
           src={itemImage}
           alt={itemName}
-          className="w-[235px] h-[235px] rounded-[4px] object-contain"
+          className="w-[235px] h-[235px] rounded-[4px] object-contain bg-white"
           width={100}
           height={100}
         />
